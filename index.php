@@ -2,8 +2,9 @@
 ?>
     
 
-<main>
-    <form action="traitement.php" method="post" id="form-ajout">
+<main class="main-center">
+    <h1>Ajouter un produit</h1>
+    <form enctype="multipart/form-data" action="traitement.php" method="post" id="form-ajout">
         <p>
             <label>
                 <input type="text" step="any" name="name" placeholder="Nom du produit" class="input-ajout">
@@ -22,6 +23,24 @@
             </label>
         </p>
         <p>
+            Image : <br>
+            <label>
+                
+                <input type="url" name="img" placeholder="Lien img"class="input-ajout">
+            </label>
+        </p>
+        <p>
+            Image a evoyer : <br>
+            <label>
+                <input type="file" name="file" placeholder="Lien img"class="input-ajout" accept="image/*">
+            </label>
+        </p>
+        <p>
+            <label>
+                <textarea name="desc" id="desc"  placeholder="Déscription"></textarea>
+            </label>
+        </p>
+        <p>
             <input type="submit" name="submit" value="Ajouter le produit" class="ajout" >
         </p>
     </form>
@@ -36,6 +55,7 @@
             } else {
                 echo '';
             }
+
 
             // marche pas
         //isset($_SESSION['error']) ? $_SESSION['error'][0] : '';

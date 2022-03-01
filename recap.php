@@ -1,7 +1,8 @@
     
 <?php
 require 'asset/header.php'; ?>
-<main>
+<main class="main-center">
+<h1>Récapitulatif des produits</h1>
 <?php
 
         if (!isset($_SESSION['products']) || empty($_SESSION['products'])) {
@@ -21,40 +22,19 @@ require 'asset/header.php'; ?>
                     '<tbody>';
             $totalGeneral = 0;
             foreach ($_SESSION['products'] as $index => $product) {
-                if (isset($_POST['delete_unite_'.$index])) {
-                    unset($_SESSION['products'][$index]);
-                    header('Location:recap.php');
-                }
-                if (isset($_POST['plus_'.$index])) {
-                    ++$_SESSION['products'][$index]['qtt'];
-                    $_SESSION['products'][$index]['total'] = $_SESSION['products'][$index]['qtt'] * $product['price'];
-                    header('Location:recap.php');
-                }
-                if (isset($_POST['moins_'.$index])) {
-                    if ($_SESSION['products'][$index]['qtt'] > 1) {
-                        --$_SESSION['products'][$index]['qtt'];
-                        $_SESSION['products'][$index]['total'] = $_SESSION['products'][$index]['qtt'] * $product['price'];
-                    } else {
-                        unset($_SESSION['products'][$index]);
-                        header('Location:recap.php');
-                    }
-                    header('Location:recap.php');
-                }
-
+                
                 echo
                     '<tr>',
                         '<td>'.$index.'</td>',
-                        '<td>'.$product['name'].'</td>',
+                        '<td><a class="prod" href="produit.php?id='.$index.'">'.$product['name'].'</a></td>',
                         '<td>'.number_format($product['price'], 2, ',', '&nbsp').' €</td>',
                         '<td>
-                            <form method="post">
-                                <input type="submit" name="plus_'.$index.'" value="+" class="plm">
-                                '.$product['qtt'].'
-                                <input type="submit" name="moins_'.$index.'" value="-" class="plm">
-                            </form>  
+                            <a class="plm" href="traitement.php?action=upqte&id='.$index.'">&nbsp+&nbsp</a>
+                            '.$product['qtt'].'
+                            <a class="plm" href="traitement.php?action=downqte&id='.$index.'">&nbsp-&nbsp</a>
                         </td>',
                         '<td>'.number_format($product['total'], 2, ',', '&nbsp').' €</td>',
-                        '<td><form method="post"><input type="submit" name="delete_unite_'.$index.'" value="Supprimer" class="ajout" ></form></td>',
+                        '<td><a class="plm" href="traitement.php?action=del-unite&id='.$index.'">Supprimer</a></td>',
                     '</tr>';
                 $totalGeneral += $product['total'];
             }
@@ -70,17 +50,29 @@ require 'asset/header.php'; ?>
         if (isset($_SESSION['products']) && $_SESSION['products']) {
             ?>
 
+        
+        
+        <a class="ajout" href="traitement.php?action=delete">Supprimer</a>
 
-        <form action="traitement.php" method="post">
-            <input type="submit" name="delete" value="Supprimer les produits" class="ajout">
-            
+        
             
 
-        </form>
         
         <?php
         }
         ?>
+        <div class="error">
+        <?php
+
+            
+
+            if (isset($_SESSION['error'])) {
+                echo $_SESSION['error'][0];
+            } else {
+                echo '';
+            }
+    ?>
+    </div>
     </main>
 </body>
 </html>
