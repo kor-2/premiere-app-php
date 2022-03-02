@@ -50,11 +50,14 @@ nav a , span{
     border-radius: 6px;
 }
 
-nav a:hover, .ajout:hover, .plm:hover{
+nav a:hover, .ajout:hover, .plm:hover, .modif:hover{
     background-color: gray;
     
 }
 h1{
+    text-align: center;
+}
+h2{
     text-align: center;
 }
 
@@ -76,7 +79,7 @@ h1{
     padding: 10px;
     width: 70%;
 }
-#desc{
+#desc-ajout{
     width: 70%;
     height: 200px;
     resize: none;
@@ -123,6 +126,12 @@ table{
     width: 15%;
 }
 
+
+/*-------------------------Produit.php-----------------------*/
+
+#big-img{
+    display: flex;
+}
 .cont-img{
     width: 70%;
     margin: auto;
@@ -134,4 +143,43 @@ table{
     vertical-align: bottom;
     height: 450px;
     object-fit: cover;
+}
+
+#cont-modif{
+    display: flex;
+    justify-content: space-around;
+}
+.cont-form{
+    width: 40%;
+}
+
+.form-modif{
+    text-align: center;
+    width: 100%;
+}
+
+
+.input-modif{
+    width: 80%;
+    padding: 5px
+
+}
+.modif{
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    border:none;
+    border-radius: 6px;
+    padding: 8px;
+    width: 80%;
+}
+
+#desc-modif{
+    width: 80%;
+    height: 120px;
+    resize: none;
+
+}
+.clear{
+    clear: both;
 }

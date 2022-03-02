@@ -37,7 +37,7 @@
         </p>
         <p>
             <label>
-                <textarea name="desc" id="desc"  placeholder="Déscription"></textarea>
+                <textarea name="desc" id="desc-ajout"  placeholder="Déscription"></textarea>
             </label>
         </p>
         <p>
@@ -55,7 +55,6 @@
             } else {
                 echo '';
             }
-
 
             // marche pas
         //isset($_SESSION['error']) ? $_SESSION['error'][0] : '';
